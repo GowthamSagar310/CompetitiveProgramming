@@ -1,5 +1,5 @@
 # first part
-f = open("../../input.txt" ,'r')
+f = open("input.txt" ,'r')
 lines = [line.strip() for line in f.readlines()]
 digits = ["".join([l for l in line if l.isdigit()]) for line in lines]
 print(sum([int(d[0] + d[-1]) for d in digits]))
