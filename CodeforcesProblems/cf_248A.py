@@ -1,15 +1,13 @@
 n = int(input())
-arr = [input().replace(" ","") for _ in range(n)]
-d = {}
-for i in arr:
-    if i not in d: d[i] = 1
-    else: d[i] += 1
-print(d)
-max_config = max(d, key=d.get)
-t = 0
-for i in range(n):
-    config = arr[i]
-    for j in range(2):
-        if config[j] != max_config[j]:
-            t+=1
-print(t)
+l_sum, r_sum = 0,0
+
+for _ in range(n):
+    l, r = list(map(int, input().split()))
+    l_sum += l 
+    r_sum += r 
+
+time = 0 
+time += l_sum if l_sum <= n // 2 else (n - l_sum)
+time += r_sum if r_sum <= n // 2 else (n - r_sum)
+
+print(time)
