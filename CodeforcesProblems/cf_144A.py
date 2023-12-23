@@ -3,14 +3,19 @@ arr = list(map(int, input().split()))
 
 min_index, max_index = 0,0 
 
-for  i in range(n):
-    if arr[i] >= arr[max_index]:
-        max_index = i
-    if arr[i] <= arr[min_index]:
-        min_index = i
+# min_index < max_index 
+# min_index = max_index
+# min_index > max_index
 
-if min_index == max_index:
+for i in range(n):
+    if arr[max_index] < arr[i]:
+        max_index = i
+    if arr[min_index] >= arr[i]:
+        min_index = i 
+
+if min_index == max_index or (min_index == n-1 and max_index == 0): 
     print(0)
+elif min_index < max_index:
+    print( (n-1-min_index) + (max_index-0) - 1)
 else:
-    ans = (max_index - 0) + (n - min_index - 1) 
-    print(ans if min_index > max_index else ans-1)
+    print((n-1-min_index) + (max_index-0))
