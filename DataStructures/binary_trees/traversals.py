@@ -134,40 +134,76 @@ def post_order_two_stacks(root_node):
         array.append(s2.pop().val)
     return array
 
+# =================================================
+# all traversals at a time 
+
+def all_traversals(root_node):
+    pre_order, in_order, post_order = [], [], []
+    stack = [(root_node, 1)]
+    
+    while stack:
+        node, rep = stack.pop()
+        if rep == 1:
+            # this is the first time, i am seeing this node
+            # this must be in pre-order
+            pre_order.append(node.val)
+            # but in-order, post-orders need me 
+            stack.append((node, 2))
+            # i need to move left
+            if node.left: stack.append((node.left, 1))
+            # what about my right side ?
+            # that i ll take care when i come back
+        elif rep == 2:
+            # my left side is done, so i came back
+            in_order.append(node.val)
+            # may be post_order needs me 
+            stack.append((node, 3))
+            # what about my right side ? so first i ll process my right side and then come back
+            if node.right: stack.append((node.right, 1))
+        else:
+            # my left is done
+            # my right is done 
+            # i must be post order
+            post_order.append(node.val)
+    
+    return pre_order, in_order, post_order
+
+
+
 # testing 
 
-print("inorder traversals")
-print(in_order_recursive(bt1_root_node, []))
-print(in_order_iterative(bt1_root_node))
+# print("inorder traversals")
+# print(in_order_recursive(bt1_root_node, []))
+# print(in_order_iterative(bt1_root_node))
 
-print(in_order_recursive(bt2_root_node, []))
-print(in_order_iterative(bt2_root_node))
+# print(in_order_recursive(bt2_root_node, []))
+# print(in_order_iterative(bt2_root_node))
 
-print(in_order_recursive(bt3_root_node, []))
-print(in_order_iterative(bt3_root_node))
-
-
-print("preorder traversals")
-print(pre_order_recursive(bt1_root_node, []))
-print(pre_order_iterative(bt1_root_node))
-
-print(pre_order_recursive(bt2_root_node, []))
-print(pre_order_iterative(bt2_root_node))
-
-print(pre_order_recursive(bt3_root_node, []))
-print(pre_order_iterative(bt3_root_node))
-
-print("postorder traversals")
-print(post_order_recursive(bt1_root_node, []))
-print(post_order_iterative(bt1_root_node))
-print(post_order_two_stacks(bt1_root_node))
-
-print(post_order_recursive(bt2_root_node, []))
-print(post_order_iterative(bt2_root_node))
-print(post_order_two_stacks(bt2_root_node))
-
-print(post_order_recursive(bt3_root_node, []))
-print(post_order_iterative(bt3_root_node))
-print(post_order_two_stacks(bt3_root_node))
+# print(in_order_recursive(bt3_root_node, []))
+# print(in_order_iterative(bt3_root_node))
 
 
+# print("preorder traversals")
+# print(pre_order_recursive(bt1_root_node, []))
+# print(pre_order_iterative(bt1_root_node))
+
+# print(pre_order_recursive(bt2_root_node, []))
+# print(pre_order_iterative(bt2_root_node))
+
+# print(pre_order_recursive(bt3_root_node, []))
+# print(pre_order_iterative(bt3_root_node))
+
+# print("postorder traversals")
+# print(post_order_recursive(bt1_root_node, []))
+# print(post_order_iterative(bt1_root_node))
+# print(post_order_two_stacks(bt1_root_node))
+
+# print(post_order_recursive(bt2_root_node, []))
+# print(post_order_iterative(bt2_root_node))
+# print(post_order_two_stacks(bt2_root_node))
+
+# print(post_order_recursive(bt3_root_node, []))
+# print(post_order_iterative(bt3_root_node))
+# print(post_order_two_stacks(bt3_root_node))
+
+print(all_traversals(bt1_root_node))
