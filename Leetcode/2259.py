@@ -14,7 +14,15 @@ def removeDigit(number: str, digit: str) -> str:
                 max_value = int(number[:i] + number[i+1:])
     return str(max_value)
 
+# better approach
+def solve(number, target):
+        ans = 0 
+        for i, digit in enumerate(list(number)):
+            if digit == target:
+                ans = max(ans, int(number[:i] + number[i+1:]))
+        return str(ans)
+
 
 number = input()
 digit = input()
-print(removeDigit(number, digit))
+print(solve(number, digit))
