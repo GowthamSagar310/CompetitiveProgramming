@@ -19,10 +19,11 @@ while queue:
     for nn in adj[node]:
         if distance[node] + 1 < distance[nn]:
             distance[nn] = distance[node] + 1
-            queue.append(nn) # this is clean trick
+            queue.append(nn) 
+            # this is clean trick
             # without using the visited array, we use distance array itself. 
-            # if the nn distance is being updated, we previously did not visit the node. 
+            # if the nn distance is being updated, we found a better path.
+            # and this path leads to even better distances on nodes that are connected to current node.
             # we add it to the array. 
-            # we can achieve this using visited array also.
-            
+
 print(distance)
