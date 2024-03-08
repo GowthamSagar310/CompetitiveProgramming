@@ -168,8 +168,6 @@ def all_traversals(root_node):
     
     return pre_order, in_order, post_order
 
-
-
 # testing 
 
 # print("inorder traversals")
