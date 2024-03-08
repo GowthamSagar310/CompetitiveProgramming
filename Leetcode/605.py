@@ -11,4 +11,6 @@ for i in range(1, len(f)-1):
         if f[l] == 0 and f[r] == 0:
             f[i] = 1
             n -= 1
+print(f)
+print(n)
 print(n<=0)
