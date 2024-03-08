@@ -42,8 +42,8 @@ def solve(adj):
     # if we can somehow travel back from terminal nodes to others, 
     # and also remove the links from terminal nodes to other
     # and in the process if those nodes indegree becomes zero, there are safe nodes. 
-
     # to traverse, we need to reverse the graph. 
+    
     n = len(adj)
     revadj = [[] for _ in range(n)]
     for i in range(n):
