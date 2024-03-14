@@ -1,3 +1,4 @@
+
 # https://leetcode.com/problems/k-diff-pairs-in-an-array/description/
 
 
@@ -19,7 +20,8 @@ def solve(nums, k):
             r += 1
         else:
             l += 1
-            if l-r == 0: r += 1
+            if l-r == 0: # then there is not pair. move ahead
+                r += 1
     return count 
 
 
