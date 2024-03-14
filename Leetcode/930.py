@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/longest-mountain-in-array/description/
+# https://leetcode.com/problems/binary-subarrays-with-sum/description/?envType=daily-question&envId=2024-03-14
 
 nums = [1,0,1,0,1] 
 goal = 2
