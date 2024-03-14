@@ -1,33 +1,20 @@
-# https://leetcode.com/problems/subarray-product-less-than-k/description/
+# https://leetcode.com/problems/subarray-product-less-than-k/
 
-nums = [0,1,1]
+nums = [1,2,3,4,5]
 k = 1
-
 
 def solve(nums, k):
     if k == 0: return 0
-    pass 
+    l,r = 0,0
+    s = 1
+    count = 0
+    while r < len(nums):
+        s *= nums[r]
+        r += 1
+        while s >= k and l < len(nums):
+            s //= nums[l]
+            l += 1
+        if s > 0 and s < k: count += (r-l)
+    return count 
 
 print(solve(nums, k))
-
-def subarrays(nums):
-    for i in range(len(nums)):
-        for j in range(i, len(nums)):
-            print(nums[i:j+1])
-# subarrays(nums)
-
-def recursive_subarrays(nums, start, end):
-    if start >= len(nums) and end >= len(nums): return 
-    if end >= len(nums):
-        recursive_subarrays(nums, start+1, start+1)
-    else:
-        print(nums[start:end+1])
-        recursive_subarrays(nums,start,end + 1)
-
-def recursive_subarrays_2(nums, start, end):
-    if end == len(nums): return 
-    if start > end:
-        recursive_subarrays_2(nums, 0, end+1)
-    else:
-        print(nums[start:end+1])
-        recursive_subarrays_2(nums, start+1, end)
